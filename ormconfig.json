@@ -1,0 +1,14 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "user",
+    "password": "secrect51",
+    "database": "instituto",
+    "entities": ["src/**/*.entity.ts"],
+    "synchronize": false,
+    "migrationsTableName": "migrations",
+    "migrations": ["src/database/migrations/*.ts"],
+"cli":{
+    "migrationsDir": "src/database/migrations"
+} }

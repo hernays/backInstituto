@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+    database:
+        image: postgres:15.1
+        container_name: instituto
+        restart: always
+        environment:
+           - POSTGRES_DB=instituto
+           - POSTGRES_USER=user
+           - POSTGRES_PASSWORD=secrect51
+        ports:
+          - 5432:5432
