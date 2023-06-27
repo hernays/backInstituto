@@ -8,6 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { CoursService } from '../services/cours.service';
+import { Cours } from '../interface/cours.interface';
 
 @Controller('cours')
 export class CoursController {
@@ -23,12 +24,12 @@ export class CoursController {
   }
 
   @Post('create')
-  create(@Body() body: any) {
+  create(@Body() body: Cours) {
     return this.coursService.create(body);
   }
 
   @Put('actualizarcurso/:id')
-  update(@Param('id') id: number, @Body() body: any) {
+  update(@Param('id') id: number, @Body() body: Cours) {
     return this.coursService.update(id, body);
   }
 

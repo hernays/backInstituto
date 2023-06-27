@@ -8,6 +8,7 @@ import { Repository } from 'typeorm';
 import { User } from '../entities/users.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Cour } from 'src/components/cours/entities/cours.entity';
+import { SaveUsers } from '../interface/users.interface';
 
 @Injectable()
 export class UsersService {
@@ -34,7 +35,7 @@ export class UsersService {
     return user;
   }
 
-  async create(body: any) {
+  async create(body: SaveUsers) {
     const cour = await this.cours.findOne({ where: { id: body.courId } });
     if (!cour) {
       throw new NotFoundException('No se encontraron Resultados');
@@ -49,7 +50,7 @@ export class UsersService {
     return this.users.save(newUser);
   }
 
-  async update(id: any, body: any) {
+  async update(id: any, body: SaveUsers) {
     const user = await this.users.find(id);
     const existe = user.filter((elements) => elements.id == id);
     if (existe.length === 0) {

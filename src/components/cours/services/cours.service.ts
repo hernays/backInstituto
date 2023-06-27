@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Cour } from '../entities/cours.entity';
 import { Repository } from 'typeorm';
 import { User } from 'src/components/users/entities/users.entity';
+import { Cours } from '../interface/cours.interface';
 
 @Injectable()
 export class CoursService {
@@ -25,12 +26,12 @@ export class CoursService {
     return res;
   }
 
-  create(body: any) {
+  create(body: Cours) {
     const newCour = this.cours.create(body);
     return this.cours.save(newCour);
   }
 
-  async update(id: any, body: any) {
+  async update(id: any, body: Cours) {
     const res = await this.cours.update(id, body);
     return res;
   }
